@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    <title>Showorder</title>
+{% endblock %}
+
+
+{% block content %}
+   <table class="table table-dark">
+       <tr>
+           <th>Date</th>
+           <th>Provider</th>
+           <th>Nameofproduct</th>
+           <th>Price</th>
+           <th>Quantity</th>
+           <th>Amount</th>
+           <th>Stock</th>
+    
+       </tr>
+       {% for i in order %}
+       <tr>
+           <td>{{i.Date}}</td>
+           <td>{{i.Provider}}</td>
+         
+           <td>{{i.Nameofproduct}}</td>
+           <td>{{i.Price}}</td>
+           <td>{{i.Quantity}}</td>
+           <td>{{i.Amount}}</td>
+           <td>{{i.Stock}}</td>
+           
+         
+          
+           
+            <td><a href="{% url 'delete' i.id %}"><button class="btn btn-danger">Delete</button></a></td>
+            
+            <td><a href="{% url 'update' i.id %}"><button class="btn btn-warning">Update</button></a></td>
+        
+        
+
+       </tr>
+        {% endfor %}
+   </table>
+   <br>
+   <a href="{% url 'addorder' %}">
+       <button class="btn btn-success">Add order</button>
+   </a>
+
+
+{% endblock %}
